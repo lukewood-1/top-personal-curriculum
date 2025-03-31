@@ -1,0 +1,289 @@
+:root {
+  color-scheme: light dark;
+  font-family: Helvetica, system-ui, sans-serif;
+
+  --dark: #121212;
+  --light: #e8e8e8;
+}
+
+body {
+  min-width: 320px;
+  background: var(--dark);
+  color: var(--light);
+}
+
+textarea {
+  vertical-align: middle;
+}
+
+ul li > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+ul li:last-of-type {
+  margin-bottom: 1rem;
+}
+
+input[type='checkbox']{
+  appearance: none;
+  width: 2.5rem;
+  height: 1rem;
+  background-color: #a55;
+  border: 1px solid #000;
+  border-radius: .25rem;
+  display: inline-flex;
+  transition: background-color .5s, transform .75s;
+
+  &::before {
+    content: '';
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    background: #333;
+    border-radius: 50%;
+    transform: translateX(20%);
+  }
+}
+input[type='checkbox']:checked{
+  background-color: #5a5;
+
+  &::before {
+    transform: translateX(200%);
+  }
+}
+
+.global-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+div.idade-info, div.nacionalidade-info, div.CEP-info, div.bairro-info, div.cidade-info, div.estado-info {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.headline {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.subheadline {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.legend-btn {
+  vertical-align: middle;
+}
+
+.legend {
+  width: max(10%, 30ch);
+  height: fit-content;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  background: linear-gradient(to left, #fffc, #fff, #fffc);
+  color: #000;
+  position: absolute;
+  transition: opacity .25s, transform .2s;
+  z-index: 1;
+}
+
+hr {
+  border: 2px solid var(--light);
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.personal-info > div {
+  margin-bottom: 1rem;
+}
+.personal-info div span {
+  margin-right: 0.5rem;
+}
+
+.tel-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.academics-info ul{
+  display: grid;
+  grid: repeat(auto-fit, 3rem) / auto;
+  gap: 0;
+}
+.academics-info li {margin-bottom: 0;}
+
+.skills-info h2, .skills-info li {margin-bottom: 1rem;}
+
+.experiences-info ul {
+  display: grid;
+  grid: repeat(auto-fit, 7rem) / auto;
+  gap: 3rem;
+}
+
+.experiences-info h2 {margin-bottom: 0;}
+
+.additional-info ul li {
+  margin-bottom: 1rem;
+
+  & button {margin-left: 1rem;}
+}
+
+details {margin-bottom: 1rem;}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--light);
+    color: var(--dark);
+  }
+}
+
+@media screen and (max-width: 1023px){
+  * {
+    font-size: calc(.85rem + .5vw);
+  }
+
+  input:not([type='checkbox']){
+    display: block;
+  }
+
+  ul li div{
+    align-items: stretch;
+    
+    & > div {
+      gap: 1rem;
+    }
+  }
+
+  .personal-info, .personal-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .personal-info div span {
+    margin: 0;
+  }
+  input {
+    width: 100%;
+  }
+  .tel-container {
+    flex-flow: column;
+    
+    & input {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .objective {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+
+  .academics-info ul {
+    grid: repeat(auto-fit, minmax(15rem, 1fr)) / auto;
+  }
+  .academics-info ul li {
+    margin-bottom: 2rem;
+  }
+  .academics-info ul li div{
+    display: flex;
+    flex-flow: column;
+
+    & div:last-of-type {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .skills-info h2 {
+    margin-block-end: 2rem;
+  }
+  .skills-info li:last-of-type {
+    margin-bottom: 1rem;
+  }
+  .skills-info ul {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+  .skills-info li div {
+    margin-bottom: 1rem;
+  }
+
+  .experiences-info ul {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+
+  .experiences-info ul li div {
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .additional-info {
+    margin-bottom: 2rem;
+  }
+  .additional-info li {
+    display: grid;
+    grid: 1fr / 100%;
+    gap: 1rem;
+  }
+}
+
+@media print {
+  h2 {margin-block-end: 0;}
+
+  ul {margin-block-start: 0;}
+
+  .personal-info {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 0;
+  }
+  .personal-info div span {
+    margin-right: 0;
+  }
+
+  #nome {
+    font-size: 1.5rem;
+    font-style: bold;
+    margin-bottom: .25rem;
+  }
+
+  .objective {
+    margin-bottom: 1.5rem;
+
+    & p {font-size: 1.25rem;}
+  }
+
+  .academics-info ul{
+    grid: repeat(auto-fit, 2rem) / auto;
+  }
+  .academics-info ul li {
+    margin-block-end: 0;
+  }
+
+  .experiences-info ul {
+    grid: repeat(auto-fit, 4rem) / auto;
+    gap: 2rem;
+  }
+
+  .experiences-info li > div {
+    margin-bottom: -1rem;
+  }
+  .experiences-info li div:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .additional-info li {
+    margin-bottom: 0;
+  }
+
+  @page {
+    size: auto;
+    margin: low;
+  }
+}
